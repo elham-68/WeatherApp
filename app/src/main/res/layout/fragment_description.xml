@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="locale"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        tools:context="myweatherApplication.example.MyWeatherApplication.ui.activity.MainActivity">
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_40sdp"
+            app:fabSize="mini"
+            app:backgroundTint="@color/white"
+            app:srcCompat="@drawable/ic_baseline_close_24"
+            app:tint="@color/gray_700" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="-20dp"
+            app:cardCornerRadius="@dimen/_16sdp"
+            app:strokeColor="@color/transparent"
+            app:strokeWidth="@dimen/_2sdp"
+            app:cardElevation="@dimen/_2sdp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:layoutDirection="locale"
+                android:orientation="vertical"
+                tools:context="myweatherApplication.example.MyWeatherApplication.ui.activity.MainActivity">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/_16sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/day_name_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/temp_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:layoutDirection="ltr"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textSize="@dimen/_40sdp" />
+
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_120sdp"
+            android:id="@+id/chart"/>
+
+</LinearLayout>
+
+
+            <soup.neumorphism.NeumorphCardView
+                android:layout_width="@dimen/_290sdp"
+                android:layout_height="@dimen/_130sdp"
+                app:neumorph_shapeType="pressed"
+                app:neumorph_strokeColor="@color/transparent"
+                app:neumorph_strokeWidth="@dimen/_2sdp"
+                android:layout_gravity="center_horizontal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rec_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_8sdp"
+                android:orientation="horizontal" />
+
+            </soup.neumorphism.NeumorphCardView>>
+
+    </LinearLayout>
+</LinearLayout>
+
+    </LinearLayout></com.google.android.material.card.MaterialCardView></LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
