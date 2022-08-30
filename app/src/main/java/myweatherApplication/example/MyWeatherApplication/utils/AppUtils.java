@@ -8,6 +8,14 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.text.Html;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresPermission;
 import androidx.core.os.ConfigurationCompat;
@@ -101,68 +109,69 @@ public class AppUtils {
         }
         throw new NullPointerException("u should init first");
     }
-    public static String getWeatherStatus(int weatherCode, boolean isRTL) {
-        if (weatherCode / 100 == 2) {
-            if (isRTL) {
-                return Constant.WEATHER_STATUS_PERSIAN[0];
-            } else {
-                return Constant.WEATHER_STATUS[0];
+
+    @SuppressLint("ClickableViewAccessibility")
+    public static void setTextWithLinks(TextView textView, CharSequence html) {
+        textView.setText(html);
+        textView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                if (action == MotionEvent.ACTION_UP ||
+                        action == MotionEvent.ACTION_DOWN) {
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
+
+                    TextView widget = (TextView) v;
+                    x -= widget.getTotalPaddingLeft();
+                    y -= widget.getTotalPaddingTop();
+
+                    x += widget.getScrollX();
+                    y += widget.getScrollY();
+
+                    Layout layout = widget.getLayout();
+                    int line = layout.getLineForVertical(y);
+                    int off = layout.getOffsetForHorizontal(line, x);
+
+                    ClickableSpan[] link = Spannable.Factory.getInstance()
+                            .newSpannable(widget.getText())
+                            .getSpans(off, off, ClickableSpan.class);
+
+                    if (link.length != 0) {
+                        if (action == MotionEvent.ACTION_UP) {
+                            link[0].onClick(widget);
+                        }
+                        return true;
+                    }
+                }
+                return false;
             }
-        } else if (weatherCode / 100 == 3) {
-            if (isRTL) {
-                return Constant.WEATHER_STATUS_PERSIAN[1];
-            } else {
-                return Constant.WEATHER_STATUS[1];
-            }
-        } else if (weatherCode / 100 == 5) {
-            if (isRTL) {
-                return Constant.WEATHER_STATUS_PERSIAN[2];
-            } else {
-                return Constant.WEATHER_STATUS[2];
-            }
-        } else if (weatherCode / 100 == 6) {
-            if (isRTL) {
-                return Constant.WEATHER_STATUS_PERSIAN[3];
-            } else {
-                return Constant.WEATHER_STATUS[3];
-            }
-        } else if (weatherCode / 100 == 7) {
-            if (isRTL) {
-                return Constant.WEATHER_STATUS_PERSIAN[4];
-            } else {
-                return Constant.WEATHER_STATUS[4];
-            }
-        } else if (weatherCode == 800) {
-            if (isRTL) {
-                return Constant.WEATHER_STATUS_PERSIAN[5];
-            } else {
-                return Constant.WEATHER_STATUS[5];
-            }
-        } else if (weatherCode == 801) {
-            if (isRTL) {
-                return Constant.WEATHER_STATUS_PERSIAN[6];
-            } else {
-                return Constant.WEATHER_STATUS[6];
-            }
-        } else if (weatherCode == 803) {
-            if (isRTL) {
-                return Constant.WEATHER_STATUS_PERSIAN[7];
-            } else {
-                return Constant.WEATHER_STATUS[7];
-            }
-        } else if (weatherCode / 100 == 8) {
-            if (isRTL) {
-                return Constant.WEATHER_STATUS_PERSIAN[8];
-            } else {
-                return Constant.WEATHER_STATUS[8];
-            }
-        }
-        if (isRTL) {
-            return Constant.WEATHER_STATUS_PERSIAN[4];
-        } else {
-            return Constant.WEATHER_STATUS[4];
-        }
+        });
     }
 
+
+    public static CharSequence fromHtml(String htmlText) {
+        if (TextUtils.isEmpty(htmlText)) {
+            return null;
+        }
+        CharSequence spanned;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            spanned = Html.fromHtml(htmlText, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            spanned = Html.fromHtml(htmlText);
+        }
+        return trim(spanned);
+    }
+
+    private static CharSequence trim(CharSequence charSequence) {
+        if (TextUtils.isEmpty(charSequence)) {
+            return charSequence;
+        }
+        int end = charSequence.length() - 1;
+        while (Character.isWhitespace(charSequence.charAt(end))) {
+            end--;
+        }
+        return charSequence.subSequence(0, end + 1);
+    }
 
 }

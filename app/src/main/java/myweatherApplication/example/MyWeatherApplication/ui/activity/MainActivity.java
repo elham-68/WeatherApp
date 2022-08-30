@@ -4,8 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.system.ErrnoException;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
@@ -15,8 +18,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentTransaction;
@@ -25,9 +32,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -41,25 +54,35 @@ import myweatherApplication.example.MyWeatherApplication.ui.fragment.AboutFragme
 import myweatherApplication.example.MyWeatherApplication.ui.fragment.DescriptionFragment;
 import myweatherApplication.example.MyWeatherApplication.utils.AppUtils;
 import myweatherApplication.example.MyWeatherApplication.utils.Constant;
+import myweatherApplication.example.MyWeatherApplication.utils.DialogManagment;
 import myweatherApplication.example.MyWeatherApplication.utils.SharedPreferencesUtil;
 import myweatherApplication.example.MyWeatherApplication.utils.SnackbarUtil;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.HttpException;
 import com.example.myWeatherApplication.R;
 import com.example.myWeatherApplication.databinding.ActivityMainBinding;
 import com.github.pwittchen.prefser.library.rx2.Prefser;
+import com.google.android.material.navigation.NavigationView;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.squareup.picasso.Picasso;
 
+import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParserException;
 
+import java.net.ConnectException;
+import java.net.MalformedURLException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
-public class MainActivity extends AppCompatActivity implements DailyAdapter.OnClickItemDay{
+public class MainActivity extends AppCompatActivity implements DailyAdapter.ItemClickListener {
 
     List<TimesResponse> timesResponseList;
     private List<ForecastDaily> forecastDailyList;
@@ -74,6 +97,8 @@ public class MainActivity extends AppCompatActivity implements DailyAdapter.OnCl
     private static final String TAG = MainActivity.class.getSimpleName();
     private CityInfo cityInfo;
     private boolean isDark;
+    Toolbar toolbar;
+    Context context;
 
 
     @Override
@@ -93,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements DailyAdapter.OnCl
 
     }
 
-    private void initRecyclerView(){
+    private void initRecyclerView() {
         timesResponseList = new ArrayList<>();
         timesAdapter = new TimesAdapter(MainActivity.this, timesResponseList);
         LinearLayoutManager manager = new LinearLayoutManager(MainActivity.this,
@@ -102,8 +127,8 @@ public class MainActivity extends AppCompatActivity implements DailyAdapter.OnCl
         binding.mainLayout.recDay.setAdapter(timesAdapter);
 
         forecastDailyList = new ArrayList<>();
-        dailyAdapter = new DailyAdapter(MainActivity.this, forecastDailyList,this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL,false);
+        dailyAdapter = new DailyAdapter(MainActivity.this, forecastDailyList, this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false);
         binding.mainLayout.recNextday.setLayoutManager(linearLayoutManager);
         binding.mainLayout.recNextday.setAdapter(dailyAdapter);
 
@@ -154,8 +179,9 @@ public class MainActivity extends AppCompatActivity implements DailyAdapter.OnCl
         }
     }
 
+
     private void showEmptyLayout() {
-        Glide.with(MainActivity.this).load(R.drawable.backg).into(binding.contentEmptyLayout.noCityImageView);
+        Glide.with(MainActivity.this).load(R.drawable.rainbg).into(binding.contentEmptyLayout.noCityImageView);
         binding.contentEmptyLayout.emptyLayout.setVisibility(View.VISIBLE);
         binding.mainLayout.nestedScrollView.setVisibility(View.GONE);
     }
@@ -196,23 +222,17 @@ public class MainActivity extends AppCompatActivity implements DailyAdapter.OnCl
     }
 
 
-
     private void showAboutFragment() {
         AppUtils.showFragment(new AboutFragment(), getSupportFragmentManager(), true);
 
     }
 
-
+    @SuppressLint("MissingPermission")
     private void requestWeather(String cityName) {
         if (AppUtils.isNetworkConnected()) {
             getWeatherInfo(cityName);
         } else {
-            SnackbarUtil
-                    .with(binding.swipeContainer)
-                    .setMessage(getString(R.string.no_internet))
-                    .setDuration(SnackbarUtil.LENGTH_LONG)
-                    .showError();
-            binding.swipeContainer.setRefreshing(false);
+
         }
     }
 
@@ -278,14 +298,14 @@ public class MainActivity extends AppCompatActivity implements DailyAdapter.OnCl
                     timesAdapter.notifyDataSetChanged();
 
                     JSONArray dforecastList = forecast.getJSONArray("forecastday");
-                    for (int i=0 ; i<dforecastList.length() ; i++){
+                    for (int i = 0; i < dforecastList.length(); i++) {
                         JSONObject dayObj = dforecastList.getJSONObject(i);
-                        String maxTemp =dayObj.getJSONObject("day").getString("maxtemp_c");
+                        String maxTemp = dayObj.getJSONObject("day").getString("maxtemp_c");
                         String minTemp = dayObj.getJSONObject("day").getString("mintemp_c");
                         String date = dayObj.getString("date");
                         String dicon = dayObj.getJSONObject("day").getJSONObject("condition").getString("icon");
 
-                        forecastDailyList.add(new ForecastDaily(maxTemp,minTemp,date,dicon,cityName,temp));
+                        forecastDailyList.add(new ForecastDaily(maxTemp, minTemp, date, dicon, cityName, temp));
                     }
                     dailyAdapter.notifyDataSetChanged();
 
@@ -310,19 +330,11 @@ public class MainActivity extends AppCompatActivity implements DailyAdapter.OnCl
                     binding.mainLayout.progressPm10.setProgress((int) pm10);
                     binding.mainLayout.progressPm10.setMax(400);
 
-
-
-                 /*  if (isLoad){
-                       binding.mainLayout.txtDescription.setText(AppUtils.getWeatherStatus(timesResponse.getWeatherId(),AppUtils.isRTL(MainActivity.this)));
-                   }else{
-                       binding.mainLayout.txtDescription.setText(AppUtils.getWeatherStatus(timesResponse.getWeatherId(), AppUtils.isRTL(MainActivity.this)));
-                   }*/
                 } catch (JSONException e) {
                     Log.e(TAG, "onCreateView", e);
 
                     e.printStackTrace();
                 }
-
 
             }
         }, new Response.ErrorListener() {
@@ -330,6 +342,7 @@ public class MainActivity extends AppCompatActivity implements DailyAdapter.OnCl
             public void onErrorResponse(VolleyError error) {
                 Log.e("TAG", "error");
                 binding.swipeContainer.setRefreshing(false);
+
             }
         });
         requestQueue.add(weatherInfo);
@@ -344,27 +357,22 @@ public class MainActivity extends AppCompatActivity implements DailyAdapter.OnCl
         return true;
     }
 
-    @Override
-    public void onBackPressed() {
-        if (binding.toolbarLayout.searchView.isSearchOpen()) {
-            binding.toolbarLayout.searchView.closeSearch();
-        } else {
-            super.onBackPressed();
-        }
-    }
-
 
 
     @Override
-    public void OnClick(String date, String temp, String icon,String city) {
+    public void onItemClick(View view, int position,String citys) {
         DescriptionFragment descriptionFragment = new DescriptionFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Bundle bundle = new Bundle();
-        bundle.putString("date",date);
-        bundle.putString("temp",temp);
-        bundle.putString("icon",icon);
-        bundle.putString("city",city);
+        bundle.putString("id", String.valueOf(position));
+         bundle.putString("city",citys);
         descriptionFragment.setArguments(bundle);
-        transaction.replace(R.id.fragment_container,descriptionFragment).commit();
+        transaction.replace(R.id.fragment_container, descriptionFragment).commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        DialogManagment.exitBackPressed(MainActivity.this);
     }
 }

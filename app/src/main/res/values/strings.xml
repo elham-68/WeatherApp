@@ -33,7 +33,6 @@
     <string name="home">Home</string>
     <string name="future_days">Future Days</string>
     <string name="contact_us">Contact Us</string>
-    <string name="share">Share</string>
     <string name="descriptionweather">DescriptionWeather</string>
     <string name="open">open</string>
     <string name="close">close</string>
@@ -66,4 +65,47 @@
     <string name="text">Light Mode</string>
     <string name="pm_10">pm_10</string>
     <string name="nightmode">NightMode</string>
+    <string name="exit">Exit</string>
+    <string name="exitMessage">Exit Message</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="applicationinfo">ApplicationInfo</string>
+    <string name="share">Share</string>
+    <string name="application_info_text">
+        <![CDATA[
+            <p>
+            <b>Weather application</b>
+            <br/>
+            Version: %1$s
+            <br/>
+            This application is open source at <br/><a href="https://github.com/elham-68/MyWeatherApp">https://github.com/elham-68/MyWeatherApp</a></p>
+        ]]>
+    </string>
+    <string name="developer_info_text" translatable="false">
+        <![CDATA[
+            <p>Elham Rezaie</p>
+        ]]>
+    </string>
+    <string name="design_api_text" translatable="false">
+        <![CDATA[
+            <p>
+            <a href="https://lottiefiles.com/user/26177">Lottie & Icon files</a> by jochang
+            <br/>
+            <a href="http://https://www.weatherapi.com//">WeatherApi</a> Weather API
+            </p>
+        ]]>
+    </string>
+
+    <string name="developer_info_title">Developer Info</string>
+    <string name="design_api_title"><![CDATA[Design & API]]></string>
+    <string name="libraries_resources_title"><![CDATA[Libraries & Resources]]></string>
+    <string name="licence_title">Licence</string>
+    <string name="exite_message">Are you want to exit?</string>
+    <string name="not_city_found">City Not Found With This Name</string>
+    <string name="invalid_apikey">Api Key Is Invalid</string>
+    <string name="ok_lable">OK</string>
+    <string name="problem_network">Network Connection Problem</string>
+    <string name="retry">Retry</string>
+
 </resources>

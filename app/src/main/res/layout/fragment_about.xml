@@ -71,8 +71,11 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:text="@string/applicationinfo"
+                            android:textColor="@color/darkBlue"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_16sdp"/>
 
                         <View
                             android:layout_width="@dimen/_16sdp"
@@ -83,7 +86,8 @@
                             android:layout_width="?attr/actionBarSize"
                             android:layout_height="?attr/actionBarSize"
                             android:background="?attr/selectableItemBackgroundBorderless"
-                            app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
+                            app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24"
+                            app:tint="@color/darkBlue" />
 
                     </LinearLayout>
 
@@ -96,14 +100,15 @@
                         android:orientation="vertical"
                         android:visibility="gone">
 
+
                         <TextView
                             android:id="@+id/text_application_info"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
                         <TextView
-                            android:text="@string/developer_info"
-                            style="@style/HeadlineTextStyle"/>
+                            style="@style/HeadlineTextStyle"
+                            android:text="@string/developer_info_title" />
 
                         <TextView
                             android:id="@+id/text_developer_info"
@@ -111,29 +116,16 @@
                             android:layout_height="wrap_content" />
 
                         <TextView
-                            android:text="@string/design_api"
-                            style="@style/HeadlineTextStyle"/>
+                            style="@style/HeadlineTextStyle"
+                            android:text="@string/design_api_title" />
 
                         <TextView
                             android:id="@+id/text_design_api"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            />
-
-                        <TextView
-                            android:id="@+id/text_libraries"
-                            android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
-                        <TextView
-                            style="@style/HeadlineTextStyle"
-                            android:text="@string/license"
-                            />
 
-                        <TextView
-                            android:id="@+id/text_license"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+
 
 
                     </LinearLayout>

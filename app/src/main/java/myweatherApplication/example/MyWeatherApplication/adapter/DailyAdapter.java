@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,15 +26,13 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.VHDaily> {
 
     Context context;
     List<ForecastDaily> forecastDailyList;
-    OnClickItemDay onClickItemDay;
-    public DailyAdapter(Context context,List<ForecastDaily> forecastDailyList,OnClickItemDay onClickItemDay){
+    private ItemClickListener onItemClickListener;
+    public DailyAdapter(Context context,List<ForecastDaily> forecastDailyList,ItemClickListener clickListener){
         this.context=context;
         this.forecastDailyList=forecastDailyList;
-        this.onClickItemDay=onClickItemDay;
+        this.onItemClickListener = clickListener;
 
     }
-
-
 
     @NonNull
     @Override
@@ -62,17 +61,24 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.VHDaily> {
             e.printStackTrace();
         }
         Picasso.get().load("http:".concat(itemForecast.getIcon())).into(holder.img_daily);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClickItemDay.OnClick(itemForecast.getDate(),itemForecast.getTemp_max(),itemForecast.getIcon(),itemForecast.getCity());
+                onItemClickListener.onItemClick(view,holder.getAdapterPosition(), itemForecast.getCity());
             }
         });
+
+
     }
 
     @Override
     public int getItemCount() {
         return forecastDailyList.size();
+    }
+
+    public void setOnItemClickListener(ItemClickListener clickListener){
+        onItemClickListener = clickListener;
     }
 
     class VHDaily extends RecyclerView.ViewHolder {
@@ -87,12 +93,14 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.VHDaily> {
             txt_maxTemp=itemView.findViewById(R.id.txt_maxTemp);
             img_daily=itemView.findViewById(R.id.img_daily);
 
-
         }
+
+
     }
 
-     public interface OnClickItemDay{
-        void OnClick(String date,String temp,String icon,String city);
+
+    public interface ItemClickListener {
+        void onItemClick(View view, int position,String city);
     }
 
 }

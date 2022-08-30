@@ -26,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.airbnb.lottie.L;
 import com.example.myWeatherApplication.R;
@@ -54,12 +55,27 @@ public class AboutFragment extends DialogFragment {
         binding = FragmentAboutBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         initValues(view);
-return view;
+        return view;
     }
 
 
     private void initValues(View view) {
         activity = getActivity();
+        if (activity != null){
+
+            String versionName = "";
+            try{
+                versionName = activity.getPackageManager().getPackageInfo(activity.getPackageName(),0).versionName;
+            }catch (PackageManager.NameNotFoundException e){
+
+            }
+            setTextWithLinks(view.findViewById(R.id.text_application_info),getString(R.string.application_info_text,versionName));
+            setTextWithLinks(view.findViewById(R.id.text_developer_info),getString(R.string.developer_info_text));
+            setTextWithLinks(view.findViewById(R.id.text_design_api),getString(R.string.design_api_text));
+
+
+
+        }
         binding.nightModeSwitch.setChecked(SharedPreferencesUtil.getInstance(activity).isDarkThemeEnabled());
         binding.nightModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -98,6 +114,11 @@ return view;
             }
         });
     }
+
+    private void setTextWithLinks(TextView text,String htmlText){
+        AppUtils.setTextWithLinks(text,AppUtils.fromHtml(htmlText));
+    }
+
     private void toggle(){
         boolean show = toggleArrow(binding.btnInfo);
         if (show){
@@ -141,6 +162,8 @@ return view;
         activity.finish();
     }
 
+ private void descriptionInfo(){
 
+ }
 
 }
