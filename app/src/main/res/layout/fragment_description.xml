@@ -14,7 +14,7 @@
         android:clickable="true"
         android:focusable="true"
         android:orientation="vertical"
-        tools:context="myweatherApplication.example.MyWeatherApplication.ui.activity.MainActivity">
+        tools:context="com.example.weather.ui.activity.MainActivity">
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -45,7 +45,8 @@
                 android:gravity="bottom"
                 android:layoutDirection="locale"
                 android:orientation="vertical"
-                tools:context="myweatherApplication.example.MyWeatherApplication.ui.activity.MainActivity">
+                android:background="@color/backMain"
+                tools:context="com.example.weather.ui.activity.MainActivity">
 
 
             <LinearLayout
@@ -67,8 +68,9 @@
                 android:id="@+id/day_name_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:gravity="center"
-                android:textSize="40sp"
+                android:textSize="36sp"
                 android:textStyle="bold" />
 
             <com.airbnb.lottie.LottieAnimationView
@@ -77,6 +79,7 @@
                 android:layout_height="120dp"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true" />
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -84,9 +87,10 @@
     android:orientation="vertical">
 
             <TextView
-                android:id="@+id/temp_text_view"
+                android:id="@+id/txt_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center"
                 android:layoutDirection="ltr"
@@ -102,12 +106,13 @@
 </LinearLayout>
 
 
-            <soup.neumorphism.NeumorphCardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="@dimen/_290sdp"
                 android:layout_height="@dimen/_130sdp"
-                app:neumorph_shapeType="pressed"
-                app:neumorph_strokeColor="@color/transparent"
-                app:neumorph_strokeWidth="@dimen/_2sdp"
+                app:strokeWidth="@dimen/_3sdp"
+                app:strokeColor="@color/transparent"
+                android:backgroundTint="@color/cardBg"
+                app:cardCornerRadius="@dimen/_16sdp"
                 android:layout_gravity="center_horizontal">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -117,7 +122,7 @@
                 android:layout_margin="@dimen/_8sdp"
                 android:orientation="horizontal" />
 
-            </soup.neumorphism.NeumorphCardView>>
+            </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 </LinearLayout>

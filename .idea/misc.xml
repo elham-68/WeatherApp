@@ -10,6 +10,8 @@
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21203703703703702" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/activity_bg.xml" value="0.2169230769230769" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/activity_main_bg.xml" value="0.2203125" />
+        <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/back_btn_boarding.xml" value="0.2203125" />
+        <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/back_btn_boarding2.xml" value="0.2203125" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/bg_search.xml" value="0.2169230769230769" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.19722222222222222" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/ic_baseline_brightness_2_24.xml" value="0.2203125" />
@@ -18,8 +20,10 @@
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.21203703703703702" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/ic_baseline_keyboard_arrow_up_24.xml" value="0.21203703703703702" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.2203125" />
+        <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.2203125" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.2169230769230769" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/ic_done_black_24dp.xml" value="0.21076923076923076" />
+        <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2203125" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/item_bg.xml" value="0.2203125" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/progress_air_quality.xml" value="0.21614583333333334" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/drawable/search_bg.xml" value="0.2203125" />
@@ -29,8 +33,11 @@
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/activity_daily.xml" value="0.1621376811594203" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/activity_day.xml" value="0.1852355072463768" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/activity_description.xml" value="0.1" />
+        <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/activity_empty.xml" value="0.17889492753623187" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/activity_next_day.xml" value="0.15" />
+        <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/activity_on_board.xml" value="0.15" />
+        <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/activity_on_boarding.xml" value="0.15" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/activity_splash_screen.xml" value="0.19746376811594202" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/content_empty.xml" value="0.20416666666666666" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/dialog_search.xml" value="0.25" />
@@ -43,13 +50,15 @@
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/item_progress_air.xml" value="0.1" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/item_quality.xml" value="0.22" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/item_rating.xml" value="0.19384057971014493" />
+        <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/item_slider.xml" value="0.25" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/item_time.xml" value="0.19746376811594202" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/items_day.xml" value="0.1" />
-        <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/layout_main.xml" value="0.1" />
+        <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/layout_main.xml" value="0.18" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/row_item.xml" value="0.1" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/search_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/search_view.xml" value="0.1" />
-        <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/toolbar.xml" value="0.16" />
+        <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/slider.xml" value="0.16576086956521738" />
+        <entry key="..\:/MyWeatherApplication/app/src/main/res/layout/toolbar.xml" value="0.1" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/menu/search_menu.xml" value="0.33" />
         <entry key="..\:/MyWeatherApplication/app/src/main/res/menu/slide_menu.xml" value="0.1" />
       </map>

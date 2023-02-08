@@ -4,6 +4,7 @@
     android:id="@+id/nested_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/backMain"
     android:visibility="visible">
 
     <LinearLayout
@@ -11,15 +12,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <soup.neumorphism.NeumorphCardView
-            android:layout_width="@dimen/_300sdp"
-            android:layout_height="@dimen/_300sdp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/_290sdp"
+            android:layout_height="@dimen/_290sdp"
             android:layout_gravity="center_horizontal"
-            app:neumorph_shadowElevation="@dimen/_2sdp"
-            app:neumorph_strokeColor="@color/transparent"
-            app:neumorph_shapeType="basin"
-            app:neumorph_strokeWidth="@dimen/_2sdp"
-            >
+            app:cardCornerRadius="@dimen/_16sdp"
+            app:strokeWidth="@dimen/_2sdp"
+            android:backgroundTint="@color/cardBg"
+            app:strokeColor="@color/transparent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,15 +33,17 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/_6sdp"
-                    android:text="CoutryName"
-                    android:textStyle="bold"
+                    android:text="@string/country"
+                    android:textColor="@color/textColor"
                     android:textSize="@dimen/_22sdp" />
 
                 <ImageView
                     android:id="@+id/weather"
                     android:layout_width="@dimen/_60sdp"
                     android:layout_height="@dimen/_60sdp"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/rain"
+                    />
 
 
                 <TextView
@@ -49,9 +51,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/celcius"
+                    android:text="25°C"
                     android:textSize="@dimen/_32sdp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/textColor"
+                    />
 
                 <TextView
                     android:id="@+id/txt_description"
@@ -60,15 +63,15 @@
                     android:layout_below="@id/txt_temp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/_2sdp"
-                    android:text="@string/condition"
-                    android:textStyle="bold"
+                    android:text="@string/rainy"
+                    android:textColor="@color/textColor"
                     android:textSize="@dimen/_18sdp" />
 
                 <TextView
                     android:id="@+id/txt_time_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:textSize="@dimen/_16sdp" />
@@ -89,47 +92,53 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_4sdp">
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/img_sunrise"
                             android:layout_width="@dimen/_36sdp"
                             android:layout_height="@dimen/_36sdp"
+                            app:srcCompat="@drawable/sunrisepic"
                             android:layout_marginLeft="@dimen/_70sdp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/img_sunset"
                             android:layout_width="@dimen/_36sdp"
                             android:layout_height="@dimen/_36sdp"
+                           app:srcCompat="@drawable/sunsetpic"
                             android:layout_marginLeft="@dimen/_60sdp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_8sdp">
 
                         <TextView
                             android:id="@+id/txt_sunrise"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/textColor"
                             android:layout_marginLeft="@dimen/_70sdp"
                             android:textSize="@dimen/_12sdp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/txt_suset"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/textColor"
                             android:layout_marginLeft="@dimen/_40sdp"
                             android:textSize="@dimen/_12sdp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </LinearLayout>
             </LinearLayout>
 
-        </soup.neumorphism.NeumorphCardView>
+        </com.google.android.material.card.MaterialCardView>
 
 
         <TextView
@@ -137,17 +146,18 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_8sdp"
             android:text="@string/nextHourly"
+            android:textColor="@color/textColor"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />
 
-        <soup.neumorphism.NeumorphCardView
-            android:layout_width="@dimen/_300sdp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/_290sdp"
             android:layout_height="@dimen/_130sdp"
             android:layout_gravity="center_horizontal"
-            app:neumorph_shadowElevation="@dimen/_1sdp"
-            app:neumorph_strokeWidth="@dimen/_2sdp"
-            app:neumorph_strokeColor="@color/transparent"
-            app:neumorph_shapeType="pressed">
+            app:cardCornerRadius="@dimen/_16sdp"
+            app:strokeColor="@color/transparent"
+            android:backgroundTint="@color/cardBg"
+            app:strokeWidth="@dimen/_2sdp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rec_day"
@@ -155,20 +165,22 @@
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        </soup.neumorphism.NeumorphCardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_8sdp"
-            android:text="Next_days:"
+            android:text="@string/nextdays"
+            android:textColor="@color/textColor"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="@dimen/_300sdp"
+            android:layout_width="@dimen/_290sdp"
             android:layout_height="@dimen/_130sdp"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            >
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rec_Nextday"
@@ -182,19 +194,19 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_8sdp"
             android:text="@string/airquality"
+            android:textColor="@color/textColor"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />
 
-        <soup.neumorphism.NeumorphCardView
-            android:layout_width="@dimen/_300sdp"
-            android:layout_height="@dimen/_160sdp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/_290sdp"
+            android:layout_height="@dimen/_170sdp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:layout_marginRight="@dimen/_8sdp"
-            app:neumorph_strokeColor="@color/transparent"
-            app:neumorph_strokeWidth="@dimen/_2sdp"
-            app:neumorph_shadowElevation="@dimen/_1sdp">
-
+            android:background="@color/white"
+            app:strokeColor="@color/transparent"
+            android:backgroundTint="@color/cardBg"
+            app:strokeWidth="@dimen/_2sdp"
+            app:cardCornerRadius="@dimen/_16sdp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -213,12 +225,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/co"
+                    android:textColor="@color/textColor"
                     android:textSize="@dimen/_12sdp" />
 
                 <TextView
                     android:id="@+id/txt_no2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
                     android:text="@string/no2"
                     android:textSize="@dimen/_12sdp" />
 
@@ -226,6 +240,7 @@
                     android:id="@+id/txt_O3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
                     android:text="@string/o3"
                     android:textSize="@dimen/_12sdp" />
 
@@ -233,19 +248,22 @@
                     android:id="@+id/txt_so2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
                     android:text="@string/so2"
                     android:textSize="@dimen/_12sdp" />
                 <TextView
                     android:id="@+id/txt_pm2_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
                     android:text="@string/pm2_5"
                     android:textSize="@dimen/_12sdp" />
                 <TextView
                     android:id="@+id/txt_pm_10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pm_10"
+                    android:textColor="@color/textColor"
+                    android:text="pm10:"
                     android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>
@@ -298,9 +316,7 @@
 
             </LinearLayout>
             </LinearLayout>
-
-        </soup.neumorphism.NeumorphCardView>
-
-
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
+

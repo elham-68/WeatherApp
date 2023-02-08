@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimaryNight</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkNight</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
     <style name="TextAppearance.AppCompat.Title" parent="Base.TextAppearance.AppCompat.Title"/>
     <style name="AppFullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
