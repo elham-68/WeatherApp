@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:flow_horizontalAlign="center">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_160sdp"
+        android:id="@+id/img_slider"
+        android:src="@drawable/weather"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_slider"
+        android:text="@string/first_title"
+        android:textSize="@dimen/_16sdp"
+        android:textAlignment="center"
+        android:textColor="@color/gray_700"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/desc_slider"
+        android:textSize="@dimen/_12sdp"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:text="@string/first_desc"
+        android:textAlignment="center"
+        android:padding="@dimen/_20sdp"
+        />
+
+</LinearLayout>

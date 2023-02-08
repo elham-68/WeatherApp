@@ -1,45 +1,16 @@
 <resources>
-    <string name="app_name">MyWeatherApplication</string>
-    <string name="humidity">Humidity:</string>
-    <string name="precipitation">Precipitation:</string>
-    <string name="chance_of_rain">Chance of Rain:</string>
-    <string name="wind_chill">Wind Speed:</string>
-    <string name="cloud_cover">Cloud Cover:</string>
-    <string name="sunday">Sunday</string>
-    <string name="monday">Monday</string>
-    <string name="tuesday">Tuesday</string>
-    <string name="wednesday">Wednesday</string>
-    <string name="thursday">Thursday</string>
-    <string name="friday">Friday</string>
-    <string name="saturday">Saturday</string>
-    <string name="dew_point">Dew Point:</string>
-    <string name="pressure">Pressure:</string>
-    <string name="sunrise">Sunrise:</string>
-    <string name="sunset">Sunset:</string>
-    <string name="cityName">City</string>
-    <string name="celcius">25°C</string>
+    <string name="app_name">WeatherApplication</string>
     <string name="weatherapplication">WeatherApplication</string>
-    <string name="condition">Condition</string>
-    <string name="todaysWeather">Today\'s Weather Forecast</string>
     <string name="time">time</string>
-    <string name="today">Today...</string>
     <string name="forecast">Forecast</string>
     <string name="search_city">Search City</string>
     <string name="countryName">CountryName</string>
     <string name="dayname">DayName</string>
     <string name="degree">20C</string>
-    <string name="descriptionDaily">DescriptionDaily</string>
 
-    <string name="home">Home</string>
-    <string name="future_days">Future Days</string>
-    <string name="contact_us">Contact Us</string>
-    <string name="descriptionweather">DescriptionWeather</string>
-    <string name="open">open</string>
-    <string name="close">close</string>
-    <string name="about">About</string>
     <string name="todo">TODO</string>
-    <string name="nextDays">Next Days</string>
-    <string name="nextHourly">NextHourly</string>
+    <string name="nextDays">NextDays:</string>
+    <string name="nextHourly">NextHourly:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="searchcity">SearchCity</string>
@@ -63,7 +34,6 @@
     <string name="countryname">CountryName</string>
     <string name="english">English</string>
     <string name="text">Light Mode</string>
-    <string name="pm_10">pm_10</string>
     <string name="nightmode">NightMode</string>
     <string name="exit">Exit</string>
     <string name="exitMessage">Exit Message</string>
@@ -102,10 +72,24 @@
     <string name="libraries_resources_title"><![CDATA[Libraries & Resources]]></string>
     <string name="licence_title">Licence</string>
     <string name="exite_message">Are you want to exit?</string>
-    <string name="not_city_found">City Not Found With This Name</string>
-    <string name="invalid_apikey">Api Key Is Invalid</string>
-    <string name="ok_lable">OK</string>
-    <string name="problem_network">Network Connection Problem</string>
+    <string name="nextdays">NextDays:</string>
+    <string name="lets_get_start">Lets Get Start</string>
+    <string name="first_desc"> In this Application you can see the weather condition of that city in the different time parts of the day and the other days of week by searching for the name of the desired city</string>
+    <string name="second_desc">The air quality of each city is displayed</string>
+    <string name="third_desc">The percentage of rainfall can be seen every hour of the day</string>
+    <string name="first_title">HourlyWeather</string>
+    <string name="second_title">AirQuality</string>
+    <string name="third_title">RainForecast</string>
+    <string name="skip">Skip</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="country">Country</string>
+    <string name="rainy">Rainy</string>
+    <string name="noCity">No City Found With this name</string>
+    <string name="search_lablel">Search</string>
+    <string name="apikey">API Key Is Invalid.Wait For Next Update</string>
+    <string name="oklabel">Ok</string>
+    <string name="networkerror">Network Connection Problem</string>
     <string name="retry">Retry</string>
 
 </resources>

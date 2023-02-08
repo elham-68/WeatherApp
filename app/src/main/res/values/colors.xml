@@ -4,31 +4,31 @@
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#00BCD4</color>
-    <color name="teal_300">#CFD0D1</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#CFCBCB</color>
+    <color name="whites">#FFFFFF</color>
     <color name="transparent">#2A534F50</color>
     <color name="blue">#91BEE3</color>
     <color name="darkBlue">#266EAA</color>
-    <color name="gray_200">#EEEEEE</color>
     <color name="yellow">#FFC107</color>
-    <color name="grey_10">#e6e6e6</color>
 
 
 
 
 
-    <color name="colorPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#dddddd</color>
+    <color name="colorPrimary">#266AAA</color>
+    <color name="colorPrimaryDark">#C6C5C5</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="overlay_dark_50">#40000000</color>
-    <color name="material_blue">#6452f0</color>
+    <color name="overlay_dark_50">#F30E0E0E</color>
+    <color name="dark_blue">#017ACC</color>
     <color name="green_success">#155724</color>
-    <color name="colorPrimaryNight">#263238</color>
+    <color name="colorPrimaryNight">#C6C5C5</color>
     <color name="colorPrimaryDarkNight">#141d26</color>
     <color name="scrim">#99323232</color>
-    <color name="gray_700">#616161</color>
+    <color name="gray_700">#474646</color>
 
-
+    <color name="cardBg">#F1EEEE</color>
+    <color name="backMain">#F1EEEE</color>
+    <color name="textColor">#363636</color>
 </resources>
